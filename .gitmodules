@@ -1,0 +1,18 @@
+[submodule "Freaks-PostService"]
+	path = Freaks-PostService
+	url = https://github.com/Freaks-Fontys/Freaks-PostService.git
+[submodule "Freaks-CarDataService"]
+	path = Freaks-CarDataService
+	url = https://github.com/Freaks-Fontys/Freaks-CarDataService.git
+[submodule "Freaks-Userservice"]
+	path = Freaks-Userservice
+	url = https://github.com/Freaks-Fontys/Freaks-Userservice.git
+[submodule "Freaks-APIGateway"]
+	path = Freaks-APIGateway
+	url = https://github.com/Freaks-Fontys/Freaks-APIGateway.git
+[submodule "Freaks-AuthService"]
+	path = Freaks-AuthService
+	url = https://github.com/Freaks-Fontys/Freaks-AuthService.git
+[submodule "Freaks-Website"]
+	path = Freaks-Website
+	url = https://github.com/Freaks-Fontys/Freaks-Website.git
