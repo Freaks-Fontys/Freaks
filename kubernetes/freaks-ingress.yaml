@@ -17,3 +17,23 @@ spec:
             name: freaksfrontend
             port: 
               number: 4200
+  - host: api.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: freaksgateway
+            port: 
+              number: 6011
+  - host: authservice.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: authservice
+            port: 
+              number: 6001
