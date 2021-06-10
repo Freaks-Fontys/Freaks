@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    freaks.service: authservice
+  name: authservice
+  namespace: freaks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      freaks.service: authservice
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        freaks.service: authservice
+    spec:
+      containers:
+      - image: 85116875693/freaks-authservice:latest
+        imagePullPolicy: Always
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:80 
+        name: authservice
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+      hostname: authservice
+      restartPolicy: Always
