@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        letschess.service: authservice-db
+        freaks.service: authservice-db
         app: authservice
         version: "1.0"
     spec:
