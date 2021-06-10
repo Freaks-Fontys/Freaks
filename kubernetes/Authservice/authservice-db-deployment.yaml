@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    freaks.service: authservice-db
+  name: authservice-db
+  namespace: freaks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      freaks.service: authservice-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        letschess.service: authservice-db
+        app: authservice
+        version: "1.0"
+    spec:
+      containers:
+      - image: mysql:8.0.24
+        imagePullPolicy: IfNotPresent
+        args:
+        - --default-authentication-plugin=mysql_native_password
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: freaksPSWD
+        name: authservice-db
+        ports:
+        - containerPort: 3306
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: authservice-db-data
+      hostname: authservice-db
+      restartPolicy: Always
+      volumes:
+      - name: authservice-db-data
+        persistentVolumeClaim:
+          claimName: authservice-db-data

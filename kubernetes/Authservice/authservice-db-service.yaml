@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    freaks.service: authservice-db
+  name: authservice-db
+  namespace: freaks
+spec:
+  type: ClusterIP
+  ports:
+  - name: "http"
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+  selector:
+    freaks.service: authservice-db
+status:
+  loadBalancer: {}

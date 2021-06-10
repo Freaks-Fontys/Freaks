@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: authservice
+  name: authservice-db
   namespace: freaks
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: authservice
+    name: authservice-db
   minReplicas: 1
   maxReplicas: 10
   metrics:
