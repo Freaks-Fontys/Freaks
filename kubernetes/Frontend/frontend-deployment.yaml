@@ -18,7 +18,7 @@ spec:
         freaks.service: freaksfrontend
     spec:
       containers:
-      - image: 85116875693/freaks-frontend:latest
+      - image: 85116875693/freaks-website:latest
         imagePullPolicy: Always
         name: freaks-frontendservice
         ports:
