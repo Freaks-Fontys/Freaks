@@ -37,6 +37,36 @@ spec:
             name: authservice
             port: 
               number: 6001
+  - host: postservice.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: postservice
+            port: 
+              number: 6003
+  - host: userservice.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: userservice
+            port: 
+              number: 6005
+  - host: cardataservice.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cardataservice
+            port: 
+              number: 6007
   - host: log.freaks.nl
     http:
       paths:

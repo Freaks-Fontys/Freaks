@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    freaks.service: cardataservice
+  name: cardataservice
+  namespace: freaks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      freaks.service: cardataservice
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        freaks.service: cardataservice
+    spec:
+      containers:
+      - image: 85116875693/freaks-cardataservice:latest
+        imagePullPolicy: Always
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        name: freaks-cardataservice
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+      hostname: cardataservice
+      restartPolicy: Always
+status: {}

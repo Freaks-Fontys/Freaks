@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    freaks.service: userservice-db
+  name: userservice-db
+  namespace: freaks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      freaks.service: userservice-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        freaks.service: userservice-db
+        app: userservice
+        version: "1.0"
+    spec:
+      containers:
+      - image: mysql:8.0.24
+        imagePullPolicy: IfNotPresent
+        args:
+        - --default-authentication-plugin=mysql_native_password
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: freaksPSWD
+        name: userservice-db
+        ports:
+        - containerPort: 3307
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: userservice-pv-volume
+      hostname: userservice-db
+      restartPolicy: Always
+      volumes:
+      - name: userservice-pv-volume
+        persistentVolumeClaim:
+          claimName: userservice-pv-claim
