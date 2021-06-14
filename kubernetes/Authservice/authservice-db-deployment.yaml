@@ -36,7 +36,7 @@ spec:
             cpu: "500m"
         volumeMounts:
         - mountPath: /var/lib/mysql
-          name: authservice-db-data
+          name: authservice-pv-volume
       hostname: authservice-db
       restartPolicy: Always
       volumes:
