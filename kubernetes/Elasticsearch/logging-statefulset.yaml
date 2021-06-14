@@ -52,7 +52,7 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-        - name: data
+        - name: logging-pv-volume
           mountPath: /usr/share/elasticsearch/data
       - name: increase-vm-max-map
         image: busybox
@@ -64,15 +64,7 @@ spec:
         command: ["sh", "-c", "ulimit -n 65536"]
         securityContext:
           privileged: true
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-      labels:
-        app: elasticsearch
-    spec:
-      #volumeName: letschess-logging-volume
-      storageClassName: microk8s-hostpath
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 300Mi
+      volumes:
+      - name: logging-pv-volume
+        persistentVolumeClaim:
+          claimName: logging-pv-claim
