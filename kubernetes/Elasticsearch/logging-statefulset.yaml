@@ -70,5 +70,8 @@ spec:
       labels:
         app: elasticsearch
     spec:
-      volumeName: logging-pv-volume
-      
+      storageClassName: microk8s-hostpath
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Mi
