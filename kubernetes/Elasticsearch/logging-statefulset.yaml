@@ -70,7 +70,5 @@ spec:
       labels:
         app: elasticsearch
     spec:
-      volumes:
-      - name: logging-pv-volume
-        persistentVolumeClaim:
-          claimName: logging-pv-claim
+      volumeName: logging-pv-volume
+      
