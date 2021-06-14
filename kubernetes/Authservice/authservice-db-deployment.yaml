@@ -40,6 +40,6 @@ spec:
       hostname: authservice-db
       restartPolicy: Always
       volumes:
-      - name: authservice-db-data
+      - name: authservice-pv-volume
         persistentVolumeClaim:
-          claimName: authservice-db-data
+          claimName: authservice-pv-claim
