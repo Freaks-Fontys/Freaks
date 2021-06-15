@@ -77,3 +77,13 @@ spec:
             name: kibana
             port: 
               number: 5601
+  - host: mq.freaks.nl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: freaks-mq
+            port: 
+              number: 15672
