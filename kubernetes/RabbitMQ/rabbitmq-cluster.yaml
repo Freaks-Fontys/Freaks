@@ -4,21 +4,18 @@ metadata:
   name: freaks-mq
   namespace: freaks
 spec:
-  replicas: 1
+  replicas: 3
   resources:
+    requests:
+      cpu: 100m
+      memory: 256mi
     limits:
-      # cpu: 2
-      memory: "256Mi"
+      cpu: 100m
+      memory: 256mi
   rabbitmq:
-    additionalConfig: |
-      vm_memory_high_watermark.relative = 0.7
-      disk_free_limit.absolute = 50MB
-      collect_statistics_interval = 10000
-  persistence:
-    storage: "300Mi"
-  override:
-    statefulSet:
-      spec:
-        template:
-          spec:
-            containers: []
+          additionalConfig: |
+                  log.console.level = info
+                  channel_max = 1700
+                  default_user= guest
+                  default_pass = guest
+                  default_user_tags.administrator = true
