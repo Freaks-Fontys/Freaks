@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    freaks.service: postservice
+  name: postservice
+  namespace: freaks
+spec:
+  type: ClusterIP
+  ports:
+  - name: "http"
+    port: 6003
+    targetPort: 80
+  - name: "https"
+    port: 6004
+    targetPort: 443
+  selector:
+    freaks.service: postservice
+status:
+  loadBalancer: {}

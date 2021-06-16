@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: logging-pv-volume
+  name: postservice-pv-volume
   namespace: freaks
   labels:
     type: local
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: logging-pv-claim
+  name: postservice-pv-claim
   namespace: freaks
 spec:
   storageClassName: manual
@@ -26,5 +26,4 @@ spec:
   resources:
     requests:
       storage: 100Mi
-    
 status: {}
