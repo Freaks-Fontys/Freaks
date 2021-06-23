@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    freaks.service: authservice-db
-  name: authservice-db
+    freaks.service: services-db
+  name: services-db
   namespace: freaks
 spec:
   type: ClusterIP
@@ -13,6 +13,6 @@ spec:
     port: 3306
     targetPort: 3306
   selector:
-    freaks.service: authservice-db
+    freaks.service: services-db
 status:
   loadBalancer: {}

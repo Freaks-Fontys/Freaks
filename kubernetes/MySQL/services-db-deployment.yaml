@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    freaks.service: userservice-db
-  name: userservice-db
+    freaks.service: services-db
+  name: services-db
   namespace: freaks
 spec:
   replicas: 1
   selector:
     matchLabels:
-      freaks.service: userservice-db
+      freaks.service: services-db
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        freaks.service: userservice-db
-        app: userservice
+        freaks.service: services-db
+        app: services
         version: "1.0"
     spec:
       containers:
@@ -27,7 +27,7 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: freaksPSWD
-        name: userservice-db
+        name: services-db
         ports:
         - containerPort: 3307
         resources:
@@ -39,10 +39,10 @@ spec:
             cpu: "100m"
         volumeMounts:
         - mountPath: /var/lib/mysql
-          name: userservice-pv-volume
-      hostname: userservice-db
+          name: services-pv-volume
+      hostname: services-db
       restartPolicy: Always
       volumes:
-      - name: userservice-pv-volume
+      - name: services-pv-volume
         persistentVolumeClaim:
-          claimName: userservice-pv-claim
+          claimName: services-pv-claim

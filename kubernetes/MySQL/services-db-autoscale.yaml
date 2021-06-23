@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: userservice-db
+  name: services-db
   namespace: freaks
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: userservice-db
+    name: services-db
   minReplicas: 1
   maxReplicas: 10
   metrics:
